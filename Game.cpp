@@ -3,9 +3,10 @@
 #define INCLUDE_SDL_IMAGE
 #define INCLUDE_SDL_MIXER
 
-Game * Game::instance = nullptr;
-
 Game & Game::GetInstance(){
+    if (instance == nullptr) {
+        instance = new Game("Luciana Ribeiro Lins de Albuquerque - 150016131", 1024, 600);
+    }
     return *instance;
 };
 
@@ -29,7 +30,12 @@ void Game::Run(){
 
 Game::Game(string title, int width, int height){
 
-    instance = instance ? instance : this;
+    if (instance != nullptr) {
+        SDL_Log("Get instance failed: %s\n", SDL_GetError());
+        exit(EXIT_FAILURE); 
+    }
+
+    instance = this;
     
     bool sdl_init_failed = SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_TIMER) != 0;
     if(sdl_init_failed) {
