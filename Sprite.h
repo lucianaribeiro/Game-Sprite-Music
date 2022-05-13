@@ -3,14 +3,15 @@
 
 #include <SDL2/SDL.h>
 #include <string>
-#include <State.h>
-#include <Music.h>
 #include "SDL_include.h"
 #include "Sprite.h"
 #include "Music.h"
+#include "Game.h"
 
 #define INCLUDE_SDL_IMAGE
 #define INCLUDE_SDL_MIXER
+
+using namespace std;
 
 class Sprite {
 
