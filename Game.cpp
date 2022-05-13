@@ -9,6 +9,19 @@ Game & Game::GetInstance(){
     return *instance;
 };
 
+SDL_Renderer * Game::GetRenderer(){
+	return renderer;
+}
+
+State & Game::GetState(){
+	return *state;
+}
+
+void Game::Run(){
+	//TODO
+}
+
+
 Game::Game(string title, int width, int height){
 
     instance = instance ? instance : this;
@@ -43,3 +56,11 @@ Game::Game(string title, int width, int height){
     }
 
 };
+
+Game::~Game(){
+    Mix_CloseAudio();
+	IMG_Quit();
+	SDL_DestroyRenderer(renderer);
+	SDL_DestroyWindow(window);
+	SDL_Quit();
+}
