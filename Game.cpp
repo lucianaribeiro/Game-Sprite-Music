@@ -50,7 +50,7 @@ Game::Game(string title, int width, int height){
 
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 
-    if(window || renderer == nullptr) {
+    if(window == nullptr || renderer == nullptr) {
         SDL_Log("%s\n", SDL_GetError());
         exit(EXIT_FAILURE);
     }
@@ -58,9 +58,9 @@ Game::Game(string title, int width, int height){
 };
 
 Game::~Game(){
-    Mix_CloseAudio();
-	IMG_Quit();
 	SDL_DestroyRenderer(renderer);
 	SDL_DestroyWindow(window);
+    Mix_CloseAudio();
+	IMG_Quit();
 	SDL_Quit();
 }
