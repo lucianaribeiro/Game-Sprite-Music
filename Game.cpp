@@ -39,7 +39,7 @@ Game::Game(string title, int width, int height){
     }
 
     int musics = MIX_DEFAULT_FREQUENCY | MIX_DEFAULT_FORMAT | MIX_DEFAULT_CHANNELS;
-    if(MIX_Init(musics) == 0) {
+    if(Mix_Init(musics) == 0) {
         SDL_Log("Mix failed: %s\n", SDL_GetError());
         exit(EXIT_FAILURE);
     }
