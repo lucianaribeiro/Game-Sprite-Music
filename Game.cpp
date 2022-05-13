@@ -18,7 +18,12 @@ State & Game::GetState(){
 }
 
 void Game::Run(){
-	//TODO
+	while(!state->QuitRequested()){
+        state->Update(10);
+        state->Render();
+        SDL_RenderPresent(renderer);
+        SDL_Delay(33);
+    }
 }
 
 
